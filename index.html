@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
   <title>UI Builder Pro</title>
 
-  <!-- GrapesJS 0.23.2 (ultima) -->
-  <link rel="stylesheet" href="https://unpkg.com/grapesjs@0.23.2/dist/css/grapes.min.css">
-  <script src="https://unpkg.com/grapesjs@0.23.2"></script>
+  <!-- GrapesJS Core 0.22.2 -->
+  <link rel="stylesheet" href="https://unpkg.com/grapesjs@0.22.2/dist/css/grapes.min.css">
+  <script src="https://unpkg.com/grapesjs@0.22.2"></script>
 
-  <!-- Font -->
+  <!-- GrapesJS Preset Webpage 1.0.3 (blocchi, pannelli, export, device manager tutto incluso) -->
+  <script src="https://unpkg.com/grapesjs-preset-webpage@1.0.3/dist/index.js"></script>
+
+  <!-- Font Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Nostri stili -->
@@ -17,33 +20,29 @@
 </head>
 <body>
 
-  <!-- Toolbar custom (sopra quella di GrapesJS) -->
+  <!-- Toolbar custom (sopra l'editor) -->
   <div id="custom-toolbar">
     <span class="toolbar-brand">🎨 UI Builder Pro</span>
     <div class="toolbar-actions">
-      <!-- Tema -->
       <button class="tb-btn active" data-theme="light" title="Tema Chiaro">☀️</button>
       <button class="tb-btn" data-theme="dark" title="Tema Scuro">🌙</button>
       <button class="tb-btn" data-theme="corporate" title="Tema Aziendale">💼</button>
       <span class="tb-sep"></span>
-      <!-- Pagine -->
       <button class="tb-btn" id="btn-add-page" title="Aggiungi Pagina">➕ Pagina</button>
       <button class="tb-btn" id="btn-del-page" title="Elimina Pagina">🗑️</button>
       <span class="tb-sep"></span>
-      <!-- Export -->
       <button class="tb-btn" id="btn-export-html" title="Esporta HTML">⬇ Export</button>
-      <button class="tb-btn" id="btn-export-pwa" title="Esporta come PWA">📄 PWA</button>
       <button class="tb-btn" id="btn-export-all" title="Esporta tutte le pagine">📚 Export All</button>
     </div>
   </div>
 
-  <!-- Page tabs (GrapesJS di solito li gestisce internamente, ma li aggiungiamo anche qui come UI extra) -->
+  <!-- Page tabs -->
   <div id="page-tabs"></div>
 
   <!-- Editor container -->
   <div id="gjs"></div>
 
-  <!-- Script -->
+  <!-- Il nostro script -->
   <script src="app.js"></script>
 </body>
 </html>
