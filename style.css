@@ -1,14 +1,8 @@
 /* =====================================================
    style.css — UI Builder Pro
-   Tema, page tabs, toolbar, component preview
+   Toolbar, page tabs, editor override
    ===================================================== */
-
-/* ——— RESET & BASE ——— */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -26,7 +20,7 @@ body {
   border-bottom: 1px solid #eef0f4;
   padding: 6px 16px;
   height: 44px;
-  z-index: 100;
+  z-index: 200;
   position: relative;
 }
 
@@ -86,14 +80,12 @@ body {
   padding: 0 16px;
   height: 36px;
   overflow-x: auto;
-  z-index: 99;
+  z-index: 199;
   position: relative;
   scrollbar-width: none;
 }
 
-#page-tabs::-webkit-scrollbar {
-  display: none;
-}
+#page-tabs::-webkit-scrollbar { display: none; }
 
 .page-tab {
   background: transparent;
@@ -108,13 +100,12 @@ body {
   white-space: nowrap;
   transition: all 0.15s ease;
   flex-shrink: 0;
-  min-width: 60px;
   text-align: center;
 }
 
 .page-tab:hover {
   color: #667eea;
-  background: rgba(102, 126, 234, 0.04);
+  background: rgba(102,126,234,0.04);
 }
 
 .page-tab.active {
@@ -123,21 +114,17 @@ body {
   font-weight: 600;
 }
 
-/* ——— GJS OVERRIDES ——— */
+/* ——— EDITOR OVERRIDES ——— */
 .gjs-cv-canvas {
   width: 100% !important;
   height: 100% !important;
 }
 
-.gjs-frame {
-  border-radius: 0 !important;
+#gjs {
+  height: calc(100vh - 86px) !important;
 }
 
-.gjs-frame-wrapper {
-  border-radius: 0 !important;
-}
-
-/* Blocks panel - scrollable */
+/* Blocchi scrollabili */
 .gjs-blocks-c {
   overflow-y: auto;
   max-height: calc(100vh - 200px);
@@ -158,17 +145,9 @@ body {
   font-weight: 500 !important;
 }
 
-/* Category titles */
 .gjs-category-title {
   font-weight: 600 !important;
   font-size: 13px !important;
-  letter-spacing: -0.2px !important;
-  padding: 10px 12px !important;
-}
-
-/* Device manager / panels bar */
-.gjs-pn-commands {
-  min-height: 44px !important;
 }
 
 .gjs-pn-views {
@@ -179,22 +158,15 @@ body {
   border-left: 1px solid #eef0f4 !important;
 }
 
-/* Buttons in panels */
 .gjs-btn-prim {
-  background: #667eea !important;
   border-radius: 8px !important;
   padding: 6px 14px !important;
   font-weight: 600 !important;
 }
 
-/* Selectors/classes input */
-.gjs-field {
-  border-radius: 8px !important;
-}
-
-/* Make the editor fill the remaining space */
-#gjs {
-  height: calc(100vh - 86px) !important;
+/* Animazione loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* ——— RESPONSIVE ——— */
@@ -206,23 +178,7 @@ body {
     padding: 6px 10px;
     gap: 4px;
   }
-
-  .toolbar-brand {
-    font-size: 13px;
-  }
-
-  .tb-btn {
-    font-size: 12px;
-    padding: 4px 8px;
-  }
-
-  .page-tab {
-    font-size: 12px;
-    padding: 6px 10px;
-    min-width: 50px;
-  }
-
-  #gjs {
-    height: calc(100vh - 80px) !important;
-  }
+  .tb-btn { font-size: 12px; padding: 4px 7px; }
+  .page-tab { font-size: 12px; padding: 6px 10px; }
+  #gjs { height: calc(100vh - 80px) !important; }
 }

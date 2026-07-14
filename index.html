@@ -5,12 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
   <title>UI Builder Pro</title>
 
-  <!-- GrapesJS Core 0.22.2 -->
+  <!-- GrapesJS Core 0.22.2 (moduli built-in: blocks, style, layers, pages, export, device) -->
   <link rel="stylesheet" href="https://unpkg.com/grapesjs@0.22.2/dist/css/grapes.min.css">
   <script src="https://unpkg.com/grapesjs@0.22.2"></script>
-
-  <!-- GrapesJS Preset Webpage 1.0.3 (blocchi, pannelli, export, device manager tutto incluso) -->
-  <script src="https://unpkg.com/grapesjs-preset-webpage@1.0.3/dist/index.js"></script>
 
   <!-- Font Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,7 +17,7 @@
 </head>
 <body>
 
-  <!-- Toolbar custom (sopra l'editor) -->
+  <!-- Toolbar custom -->
   <div id="custom-toolbar">
     <span class="toolbar-brand">🎨 UI Builder Pro</span>
     <div class="toolbar-actions">
@@ -31,7 +28,7 @@
       <button class="tb-btn" id="btn-add-page" title="Aggiungi Pagina">➕ Pagina</button>
       <button class="tb-btn" id="btn-del-page" title="Elimina Pagina">🗑️</button>
       <span class="tb-sep"></span>
-      <button class="tb-btn" id="btn-export-html" title="Esporta HTML">⬇ Export</button>
+      <button class="tb-btn" id="btn-export-html" title="Esporta HTML/CSS">⬇ Export</button>
       <button class="tb-btn" id="btn-export-all" title="Esporta tutte le pagine">📚 Export All</button>
     </div>
   </div>
@@ -39,10 +36,9 @@
   <!-- Page tabs -->
   <div id="page-tabs"></div>
 
-  <!-- Editor container -->
+  <!-- Editor -->
   <div id="gjs"></div>
 
-  <!-- Il nostro script -->
   <script src="app.js"></script>
 </body>
 </html>
