@@ -1,0 +1,156 @@
+/* =====================================================
+   style.css — Stili personalizzati per l'editor UI
+   ===================================================== */
+
+/* Reset base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #F5F6FA;
+  overflow: hidden;
+}
+
+/* Editor GrapesJS */
+#gjs {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Personalizzazione toolbar */
+.gjs-pn-commands {
+  background: white;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 8px 16px;
+}
+
+.gjs-pn-commands .gjs-pn-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.gjs-pn-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #DFE6E9;
+  background: white;
+  color: #636E72;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gjs-pn-btn:hover {
+  background: #F5F6FA;
+  border-color: #B2BEC3;
+}
+
+/* Pannello laterale blocchi */
+.gjs-blocks-c {
+  background: white;
+  border-right: 1px solid #F0F0F0;
+}
+
+.gjs-block {
+  border: 1px solid #F0F0F0;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 6px;
+  background: white;
+  transition: all 0.2s;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #2D3436;
+  font-weight: 500;
+}
+
+.gjs-block:hover {
+  border-color: #6C5CE7;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.15);
+}
+
+.gjs-block svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Categorie blocchi */
+.gjs-block-category .gjs-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2D3436;
+  padding: 12px 16px;
+  border-bottom: 1px solid #F0F0F0;
+  background: #FAFBFC;
+}
+
+/* Canvas */
+.gjs-cv-canvas {
+  background: #F5F6FA;
+}
+
+/* Dispositivi */
+.gjs-devices-c {
+  background: white;
+  padding: 8px;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+/* Pannello stili */
+.gjs-sm-sector {
+  border: 1px solid #F0F0F0;
+}
+
+.gjs-sm-sector-title {
+  background: #FAFBFC;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2D3436;
+  padding: 10px 16px;
+}
+
+/* Layer */
+.gjs-layers {
+  border: 1px solid #F0F0F0;
+}
+
+/* Scrollbar personalizzata */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DFE6E9;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B2BEC3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gjs-block {
+    min-height: 56px;
+    padding: 8px;
+    font-size: 11px;
+  }
+}
