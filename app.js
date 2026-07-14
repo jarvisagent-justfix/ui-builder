@@ -872,24 +872,46 @@ document.querySelectorAll('[data-theme]').forEach(btn => {
 // —————————————————————————————————————
 // 7. EXPORT
 // —————————————————————————————————————
+function downloadFile(content, filename, mimeType) {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 document.getElementById('btn-export-html').onclick = () => {
-  const w = window.open('', '_blank');
-  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><style>${editor.getCss()}</style></head><body>${editor.getHtml()}</body></html>`);
-  w.document.close();
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><style>${editor.getCss()}</style></head><body>${editor.getHtml()}</body></html>`;
+  const pageName = (pages.getSelected()?.get('name') || 'pagina').replace(/\s+/g, '-');
+  downloadFile(html, `${pageName}.html`, 'text/html');
 };
 
 document.getElementById('btn-export-all').onclick = () => {
   const all = pages.getAll();
-  let out = '# UI Builder Pro — Export Completo\n\n';
+  let html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Export Completo</title><style>body{font-family:Inter,sans-serif;max-width:800px;margin:0 auto;padding:20px;background:#f5f7fa}h1{color:#1a1a2e}pre{background:white;border-radius:8px;padding:12px;overflow-x:auto;font-size:13px}hr{border:none;border-top:1px solid #eee;margin:24px 0}</style></head><body>';
+  html += '<h1>📦 UI Builder Pro — Export Completo</h1>';
   all.forEach(p => {
     pages.select(p);
-    out += `## Pagina: ${p.get('name')||p.get('id')}\n\nHTML:\n\`\`\`html\n${editor.getHtml()}\n\`\`\`\n\nCSS:\n\`\`\`css\n${editor.getCss()}\n\`\`\`\n\n---\n\n`;
+    const name = p.get('name') || p.get('id');
+    html += `<h2>📄 ${name}</h2>`;
+    html += `<h3>HTML</h3><pre>${escapeHtml(editor.getHtml())}</pre>`;
+    html += `<h3>CSS</h3><pre>${escapeHtml(editor.getCss())}</pre>`;
+    html += '<hr>';
   });
+  html += '</body></html>';
   pages.select(all[0]);
-  const w = window.open('', '_blank');
-  w.document.write(`<html><head><title>Export</title><meta charset="UTF-8"><style>body{font-family:monospace;white-space:pre-wrap;padding:20px;font-size:13px;background:#f5f7fa}</style></head><body>${out.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</body></html>`);
-  w.document.close();
+  downloadFile(html, 'export-completo.html', 'text/html');
 };
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
 
 // —————————————————————————————————————
 // 8. AVVIO
