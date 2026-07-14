@@ -1,265 +1,228 @@
 /* =====================================================
    style.css — UI Builder Pro
-   Tema personalizzato per GrapesJS
+   Tema, page tabs, toolbar, component preview
    ===================================================== */
 
-/* Tema variabili */
+/* ——— RESET & BASE ——— */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  --app-bg: #F5F6FA;
-  --app-surface: #FFFFFF;
-  --app-text: #2D3436;
-  --app-text-secondary: #636E72;
-  --app-border: #F0F0F0;
-  --app-primary: #6C5CE7;
-  --app-card-bg: #FFFFFF;
-  --app-icon: #B2BEC3;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f7fa;
+  overflow: hidden;
+  height: 100vh;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body, html { height: 100%; overflow: hidden; }
-
-/* =====================================================
-   TOOLBAR (superiore)
-   ===================================================== */
-
-.gjs-pn-commands {
-  background: #1a1a2e !important;
-  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
-  padding: 0 8px !important;
-  min-height: 44px !important;
-}
-
-.gjs-pn-commands .gjs-pn-buttons {
+/* ——— CUSTOM TOOLBAR ——— */
+#custom-toolbar {
   display: flex;
   align-items: center;
-  gap: 2px;
-  height: 44px;
-}
-
-.gjs-pn-commands .gjs-pn-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: transparent;
-  color: rgba(255,255,255,0.6);
-  font-size: 16px !important;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  border: none !important;
-  min-width: 34px;
-}
-
-.gjs-pn-commands .gjs-pn-btn:hover {
-  background: rgba(255,255,255,0.08);
-  color: white;
-}
-
-.gjs-pn-commands .gjs-pn-btn.fa-download {
-  margin-left: auto;
-  background: #6C5CE7;
-  color: white;
-  border-radius: 8px;
-  width: 36px;
-  height: 30px;
-  font-size: 14px !important;
-}
-
-.gjs-pn-commands .gjs-pn-btn.fa-download:hover {
-  background: #7C6CF7;
-}
-
-/* =====================================================
-   SIDEBAR SINISTRA (blocchi/layers/styles)
-   ===================================================== */
-
-.gjs-pn-views-container {
-  background: #f8f9fc !important;
-  border-right: 1px solid #e8e8e8 !important;
-  width: 280px !important;
-}
-
-.gjs-pn-views {
-  background: #f8f9fc !important;
-}
-
-/* Pulsanti della sidebar (icone: blocchi, layers, styles) */
-.gjs-pn-views .gjs-pn-btn {
-  border: none !important;
-  background: transparent !important;
-  color: #b2bec3 !important;
-  font-size: 18px !important;
-  padding: 12px 16px !important;
-  transition: all 0.2s;
-  border-radius: 0 !important;
-}
-
-.gjs-pn-views .gjs-pn-btn:hover {
-  color: #6C5CE7 !important;
-  background: rgba(108,92,231,0.06) !important;
-}
-
-.gjs-pn-views .gjs-pn-btn.gjs-pn-active {
-  color: #6C5CE7 !important;
-  background: rgba(108,92,231,0.1) !important;
-  box-shadow: inset 3px 0 0 #6C5CE7 !important;
-}
-
-/* =====================================================
-   BLOCCHI
-   ===================================================== */
-
-.gjs-blocks-c {
-  padding: 8px;
-}
-
-.gjs-block-category {
-  margin-bottom: 6px;
-}
-
-.gjs-block-category .gjs-title {
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  color: #2d3436 !important;
-  padding: 8px 12px !important;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.2s;
-  user-select: none;
-  background: transparent !important;
-  border: none !important;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Inter', sans-serif;
-}
-
-.gjs-block-category .gjs-title:hover {
-  background: rgba(108,92,231,0.06) !important;
-}
-
-.gjs-block-category .gjs-title:before {
-  content: '▶';
-  display: inline-block;
-  margin-right: 6px;
-  font-size: 9px;
-  transition: transform 0.2s;
-  color: #b2bec3;
-}
-
-.gjs-block-category.open .gjs-title:before {
-  transform: rotate(90deg);
-}
-
-.gjs-block {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: calc(50% - 10px);
-  margin: 4px;
-  padding: 14px 8px 10px;
+  justify-content: space-between;
   background: white;
-  border: 1px solid #f0f0f0;
-  border-radius: 12px;
-  cursor: grab;
-  transition: all 0.2s ease;
-  font-size: 11px;
-  color: #2d3436;
-  font-weight: 500;
-  text-align: center;
-  gap: 8px;
-  vertical-align: top;
-  min-height: 72px;
-  font-family: 'Inter', sans-serif;
+  border-bottom: 1px solid #eef0f4;
+  padding: 6px 16px;
+  height: 44px;
+  z-index: 100;
+  position: relative;
 }
 
-.gjs-block:hover {
-  border-color: #6C5CE7;
-  box-shadow: 0 4px 16px rgba(108,92,231,0.15);
-  background: #fcfaff;
-  transform: translateY(-1px);
+.toolbar-brand {
+  font-weight: 700;
+  font-size: 15px;
+  color: #1a1a2e;
+  letter-spacing: -0.3px;
 }
 
-.gjs-block:active {
-  cursor: grabbing;
-  transform: scale(0.97);
-}
-
-.gjs-block svg {
-  width: 28px;
-  height: 28px;
-}
-
-.gjs-block__media {
-  margin-bottom: 2px;
-}
-
-/* =====================================================
-   CANVAS
-   ===================================================== */
-
-.gjs-cv-canvas {
-  background: #f0f2f5 !important;
-  top: 44px !important;
-}
-
-/* =====================================================
-   STYLE MANAGER (sidebar destra)
-   ===================================================== */
-
-.gjs-sm-sector {
-  border: none !important;
-  border-bottom: 1px solid #f0f0f0 !important;
-}
-
-.gjs-sm-sector-title {
-  background: #f8f9fc !important;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  color: #2d3436 !important;
-  padding: 10px 14px !important;
-  font-family: 'Inter', sans-serif;
-}
-
-.gjs-sm-properties {
-  padding: 8px 14px !important;
-}
-
-.gjs-sm-label {
-  font-size: 12px;
-  color: #636e72;
-}
-
-/* =====================================================
-   LAYERS PANEL
-   ===================================================== */
-
-.gjs-layers {
-  border: none !important;
-}
-
-.gjs-layer {
-  font-size: 13px;
-  font-family: 'Inter', sans-serif;
-}
-
-/* =====================================================
-   DEVICE SELECTOR
-   ===================================================== */
-
-.gjs-devices-c {
+.toolbar-actions {
   display: flex;
   align-items: center;
   gap: 4px;
+  flex-wrap: wrap;
 }
 
-/* =====================================================
-   SCROLLBAR
-   ===================================================== */
+.tb-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #555;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
 
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d0d0d0; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #b0b0b0; }
+.tb-btn:hover {
+  background: #f0f2f5;
+  border-color: #e0e0e0;
+}
+
+.tb-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.tb-sep {
+  width: 1px;
+  height: 22px;
+  background: #e0e0e0;
+  margin: 0 4px;
+}
+
+/* ——— PAGE TABS ——— */
+#page-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: white;
+  border-bottom: 1px solid #eef0f4;
+  padding: 0 16px;
+  height: 36px;
+  overflow-x: auto;
+  z-index: 99;
+  position: relative;
+  scrollbar-width: none;
+}
+
+#page-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.page-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #999;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+  min-width: 60px;
+  text-align: center;
+}
+
+.page-tab:hover {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.04);
+}
+
+.page-tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  font-weight: 600;
+}
+
+/* ——— GJS OVERRIDES ——— */
+.gjs-cv-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.gjs-frame {
+  border-radius: 0 !important;
+}
+
+.gjs-frame-wrapper {
+  border-radius: 0 !important;
+}
+
+/* Blocks panel - scrollable */
+.gjs-blocks-c {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+
+.gjs-block {
+  border-radius: 10px !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.gjs-block:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+.gjs-block-label {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* Category titles */
+.gjs-category-title {
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: -0.2px !important;
+  padding: 10px 12px !important;
+}
+
+/* Device manager / panels bar */
+.gjs-pn-commands {
+  min-height: 44px !important;
+}
+
+.gjs-pn-views {
+  border-left: 1px solid #eef0f4 !important;
+}
+
+.gjs-pn-views-container {
+  border-left: 1px solid #eef0f4 !important;
+}
+
+/* Buttons in panels */
+.gjs-btn-prim {
+  background: #667eea !important;
+  border-radius: 8px !important;
+  padding: 6px 14px !important;
+  font-weight: 600 !important;
+}
+
+/* Selectors/classes input */
+.gjs-field {
+  border-radius: 8px !important;
+}
+
+/* Make the editor fill the remaining space */
+#gjs {
+  height: calc(100vh - 86px) !important;
+}
+
+/* ——— RESPONSIVE ——— */
+@media (max-width: 600px) {
+  #custom-toolbar {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 44px;
+    padding: 6px 10px;
+    gap: 4px;
+  }
+
+  .toolbar-brand {
+    font-size: 13px;
+  }
+
+  .tb-btn {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .page-tab {
+    font-size: 12px;
+    padding: 6px 10px;
+    min-width: 50px;
+  }
+
+  #gjs {
+    height: calc(100vh - 80px) !important;
+  }
+}
