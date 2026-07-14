@@ -94,11 +94,16 @@ document.getElementById('btn-del-page').onclick = () => {
 const bm = editor.BlockManager;
 
 function reg(blocks) {
+  const catIcons = {
+    'Navigazione': '🧭', 'Dashboard & Stats': '📊', 'Form & Input': '📝',
+    'Elementi Base': '🔤', 'Liste': '📋', 'Commerce': '🛒', 'Social': '👥',
+    'Feedback': '💬', 'Calendario': '📅', 'Layout': '📐',
+  };
   blocks.forEach(b => bm.add(b.id, {
     label: b.label,
     content: b.content,
     category: '🧭 ' + b.cat,
-    media: b.media || '',
+    media: b.media || `<div style="font-size:32px;text-align:center;padding:4px;line-height:1.2">${catIcons[b.cat] || '🧩'}</div>`,
   }));
 }
 
@@ -749,20 +754,17 @@ const pageTemplates = {
 };
 
 // —————————————————————————————————————
-// 5. CREA PAGINE PREFINITE
+// 5. CREA PAGINE PREFINITE (FORZA FRESCO)
 // —————————————————————————————————————
 function createDefaultPages() {
   const names = ['Dashboard', 'Login', 'Profilo', 'Notifiche', 'Task List', 'Impostazioni', 'Onboarding'];
-  const first = pages.getAll()[0];
 
-  // Rinomina la prima pagina
-  if (first) {
-    first.set('name', 'Dashboard');
-    first.set('component', pageTemplates.Dashboard);
-  }
+  // Svuota TUTTE le pagine esistenti (così non si accumulano con localStorage)
+  const existing = pages.getAll();
+  existing.forEach(p => { try { pages.remove(p); } catch(e) {} });
 
-  // Aggiungi le altre
-  names.slice(1).forEach(name => {
+  // Crea tutte le pagine da capo
+  names.forEach(name => {
     pages.add({
       id: 'page-' + name.toLowerCase().replace(/\s+/g, '-'),
       name: name,
@@ -770,9 +772,13 @@ function createDefaultPages() {
     });
   });
 
-  // Torna alla prima
-  pages.select(first || pages.getAll()[0]);
+  // Seleziona Dashboard
+  const all = pages.getAll();
+  if (all.length > 0) pages.select(all[0]);
   renderPageTabs();
+
+  // Forza salvataggio in localStorage per sovrascrivere eventuali dati vecchi
+  try { editor.store(); } catch(e) {}
 }
 
 // —————————————————————————————————————
