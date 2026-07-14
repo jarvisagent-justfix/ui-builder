@@ -62,6 +62,35 @@ const components = [
   { id: 'task-card',         label: 'Task Card',             ...taskCard },
   { id: 'task-list',         label: 'Lista Task',            ...taskListBlock },
   { id: 'bottom-nav',        label: 'Bottom Navigation',     ...bottomNav },
+
+  // Elementi Base
+  { id: 'block-text',        label: 'Testo + Paragrafo',     ...blockText },
+  { id: 'block-title',       label: 'Titolo Sezione',        ...blockTitle },
+  { id: 'block-paragraph',   label: 'Paragrafo',             ...blockParagraph },
+  { id: 'block-button',      label: 'Pulsante',              ...blockButton },
+  { id: 'block-button-outline', label: 'Pulsante Outline',   ...blockButtonOutline },
+  { id: 'block-image',       label: 'Immagine',              ...blockImage },
+  { id: 'block-icon',        label: 'Icona',                 ...blockIcon },
+  { id: 'block-divider',     label: 'Divisore',              ...blockDivider },
+  { id: 'block-spacer',      label: 'Spaziatore',            ...blockSpacer },
+
+  // Form
+  { id: 'block-input',       label: 'Input Testo',           ...blockInput },
+  { id: 'block-textarea',    label: 'Textarea',              ...blockTextarea },
+  { id: 'block-select',      label: 'Menu a Tendina',        ...blockSelect },
+  { id: 'block-toggle',      label: 'Toggle',                ...blockToggle },
+  { id: 'block-checkbox',    label: 'Checkbox',              ...blockCheckbox },
+  { id: 'block-datepicker',  label: 'Selettore Data',        ...blockDatePicker },
+  { id: 'block-search',      label: 'Barra Ricerca',         ...blockSearch },
+
+  // Dati e Stati
+  { id: 'block-badge',       label: 'Badge / Tag',           ...blockBadge },
+  { id: 'block-progress',    label: 'Barra Progresso',       ...blockProgressBar },
+  { id: 'block-profile-card', label: 'Card Profilo',         ...blockProfileCard },
+  { id: 'block-alert',       label: 'Alert Successo',        ...blockAlert },
+  { id: 'block-alert-error', label: 'Alert Errore',          ...blockAlertError },
+  { id: 'block-empty',       label: 'Stato Vuoto',           ...blockEmptyState },
+  { id: 'block-loading',     label: 'Caricamento',           ...blockLoading },
 ];
 
 components.forEach(c => {
