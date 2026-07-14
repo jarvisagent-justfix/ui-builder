@@ -5,12 +5,10 @@
 const editor = grapesjs.init({
 
   container: '#gjs',
-
-  // Dimensioni canvas
   width: 'auto',
-  height: '100vh',
+  height: '100%',
 
-  // Store HTML/CSS nel localStorage
+  // Storage locale
   storageManager: {
     type: 'local',
     autosave: true,
@@ -18,12 +16,16 @@ const editor = grapesjs.init({
     stepsBeforeSave: 1,
   },
 
-  // Blocchi (li registriamo dopo)
+  // Disabilita i pannelli di default (creiamo UI personalizzata)
+  panels: { defaults: [] },
+
+  // I blocchi vengono renderizzati nel div #blocks
   blockManager: {
+    appendTo: '#blocks',
     blocks: [],
   },
 
-  // Layer, stili, trait
+  // Dispositivi
   deviceManager: {
     devices: [
       { name: 'Telefono', width: '390', height: '844' },
@@ -32,7 +34,7 @@ const editor = grapesjs.init({
     ]
   },
 
-  // Canvas opzioni
+  // Font per il canvas
   canvas: {
     styles: [
       'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
@@ -46,9 +48,7 @@ const editor = grapesjs.init({
 // =====================================================
 
 const bm = editor.BlockManager;
-const domc = editor.DomComponents;
 
-// Collezione dei nostri componenti
 const components = [
   { id: 'dashboard-header',   label: 'Header Dashboard', ...dashboardHeader },
   { id: 'stat-card-progress', label: 'Stat Card (In Progress)', ...statCardFn('#E8D5FF', '#6C5CE7', 'In Progress', '24') },
@@ -64,7 +64,6 @@ const components = [
   { id: 'bottom-nav',        label: 'Bottom Navigation',     ...bottomNav },
 ];
 
-// Registra ogni blocco
 components.forEach(c => {
   bm.add(c.id, {
     label: c.label,
@@ -75,20 +74,58 @@ components.forEach(c => {
 });
 
 // =====================================================
-// Pulsanti canvas
+// Pannello toolbar (sostituisce i pannelli di default)
 // =====================================================
 
-editor.Panels.addButton('options', {
+const pn = editor.Panels;
+
+pn.addPanel({ id: 'options', visible: true });
+
+pn.addButton('options', {
   id: 'undo',
-  className: 'fa fa-undo',
+  className: 'fa fa-undo toolbar-btn',
   command: e => e.runCommand('core:undo'),
+  attributes: { title: 'Annulla' },
 });
 
-editor.Panels.addButton('options', {
+pn.addButton('options', {
   id: 'redo',
-  className: 'fa fa-redo',
+  className: 'fa fa-redo toolbar-btn',
   command: e => e.runCommand('core:redo'),
+  attributes: { title: 'Ripeti' },
 });
+
+pn.addButton('options', {
+  id: 'device-desktop',
+  className: 'fa fa-desktop toolbar-btn',
+  command: e => editor.setDevice('Desktop'),
+  attributes: { title: 'Desktop' },
+});
+
+pn.addButton('options', {
+  id: 'device-tablet',
+  className: 'fa fa-tablet toolbar-btn',
+  command: e => editor.setDevice('Tablet'),
+  attributes: { title: 'Tablet' },
+});
+
+pn.addButton('options', {
+  id: 'device-mobile',
+  className: 'fa fa-mobile toolbar-btn',
+  command: e => editor.setDevice('Telefono'),
+  attributes: { title: 'Telefono' },
+});
+
+pn.addButton('options', {
+  id: 'export',
+  className: 'fa fa-download toolbar-btn',
+  command: 'export-html',
+  attributes: { title: 'Esporta HTML/CSS' },
+});
+
+// =====================================================
+// Comando esportazione HTML
+// =====================================================
 
 editor.Commands.add('export-html', {
   run: function(editor) {
@@ -112,43 +149,20 @@ ${html}
 </body>
 </html>`;
     const win = window.open('', '_blank');
-    win.document.write(fullDoc);
-    win.document.close();
+    if (win) {
+      win.document.write(fullDoc);
+      win.document.close();
+    }
   }
 });
 
-editor.Panels.addButton('options', {
-  id: 'export',
-  className: 'fa fa-download',
-  command: 'export-html',
-  attributes: { title: 'Esporta HTML/CSS' },
-});
+// =====================================================
+// All'avvio: espande le categorie dei blocchi
+// =====================================================
 
-// Default: carica schermata dashboard
 editor.on('load', () => {
-  // Apri il pannello dei blocchi (icona blocchi nella sidebar sinistra)
-  const btn = editor.Panels.getButton('views', 'open-blocks');
-  if (btn) btn.set('active', true);
-
-  // Espandi tutte le categorie di blocchi
   const categories = editor.BlockManager.getCategories();
   if (categories) {
     categories.each(c => c.set('open', true));
-  }
-
-  const pages = editor.Pages;
-  if (pages && pages.getAll().length === 0) {
-    // Aggiunge un componente di benvenuto
-    editor.setComponents(`
-      <div style="padding: 40px 20px; text-align: center; font-family: Inter, sans-serif; background: #F5F6FA; min-height: 100vh;">
-        <h2 style="color: #2D3436; margin-bottom: 12px;">🎨 UI Builder</h2>
-        <p style="color: #636E72; margin-bottom: 24px;">Trascina i componenti dal pannello sinistro</p>
-        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-          <div style="background: #6C5CE7; color: white; padding: 12px 24px; border-radius: 12px; font-weight: 500;">Dashboard</div>
-          <div style="background: #E84393; color: white; padding: 12px 24px; border-radius: 12px; font-weight: 500;">Task List</div>
-          <div style="background: #00B894; color: white; padding: 12px 24px; border-radius: 12px; font-weight: 500;">Charts</div>
-        </div>
-      </div>
-    `);
   }
 });

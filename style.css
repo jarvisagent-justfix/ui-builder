@@ -1,8 +1,8 @@
 /* =====================================================
-   style.css — Stili personalizzati per l'editor UI
+   style.css — UI Builder Layout
    ===================================================== */
 
-/* Reset base */
+/* Reset e font */
 * {
   margin: 0;
   padding: 0;
@@ -16,71 +16,190 @@ body, html {
   overflow: hidden;
 }
 
-/* Editor GrapesJS */
-#gjs {
+/* =====================================================
+   LAYOUT PRINCIPALE
+   ===================================================== */
+
+.app-layout {
+  display: flex;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
 }
 
-/* Personalizzazione toolbar */
-.gjs-pn-commands {
+/* Sidebar sinistra: blocchi */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
   background: white;
+  border-right: 1px solid #E8E8E8;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  padding: 16px;
   border-bottom: 1px solid #F0F0F0;
-  padding: 8px 16px;
+  background: #FAFBFC;
 }
 
-.gjs-pn-commands .gjs-pn-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.gjs-pn-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1px solid #DFE6E9;
-  background: white;
-  color: #636E72;
+.sidebar-title {
   font-size: 14px;
+  font-weight: 600;
+  color: #2D3436;
+}
+
+/* Area principale */
+.main-area {
+  flex: 1;
   display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Toolbar */
+.toolbar {
+  height: 48px;
+  min-height: 48px;
+  background: white;
+  border-bottom: 1px solid #E8E8E8;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 4px;
+}
+
+.toolbar-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #636E72;
+  font-size: 15px !important;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
+  text-decoration: none;
 }
 
-.gjs-pn-btn:hover {
-  background: #F5F6FA;
-  border-color: #B2BEC3;
+.toolbar-btn:hover {
+  background: #F0F0F0;
+  border-color: #DFE6E9;
+  color: #2D3436;
 }
 
-/* Pannello laterale blocchi */
+.toolbar-btn:active {
+  background: #E8E8E8;
+}
+
+/* Separatore toolbar */
+.toolbar-separator {
+  width: 1px;
+  height: 24px;
+  background: #E8E8E8;
+  margin: 0 8px;
+}
+
+/* =====================================================
+   GRAVESJS CANVAS
+   ===================================================== */
+
+#gjs {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Canvas area */
+.gjs-cv-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* =====================================================
+   BLOCCHI SIDEBAR
+   ===================================================== */
+
+#blocks {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
 .gjs-blocks-c {
-  background: white;
-  border-right: 1px solid #F0F0F0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
+/* Categoria blocchi */
+.gjs-block-category {
+  margin-bottom: 8px;
+}
+
+.gjs-block-category .gjs-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2D3436;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.gjs-block-category .gjs-title:hover {
+  background: #F0F0F0;
+}
+
+.gjs-block-category .gjs-title:before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 10px;
+  transition: transform 0.2s;
+  color: #B2BEC3;
+}
+
+.gjs-block-category.open .gjs-title:before {
+  transform: rotate(90deg);
+}
+
+/* Blocco singolo */
 .gjs-block {
-  border: 1px solid #F0F0F0;
-  border-radius: 10px;
-  padding: 12px;
-  margin: 6px;
-  background: white;
-  transition: all 0.2s;
-  min-height: 70px;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 12px;
+  width: calc(50% - 8px);
+  margin: 4px;
+  padding: 12px 8px;
+  background: white;
+  border: 1px solid #F0F0F0;
+  border-radius: 10px;
+  cursor: grab;
+  transition: all 0.2s;
+  font-size: 11px;
   color: #2D3436;
   font-weight: 500;
+  text-align: center;
+  gap: 6px;
+  min-height: 64px;
+  vertical-align: top;
 }
 
 .gjs-block:hover {
   border-color: #6C5CE7;
   box-shadow: 0 2px 8px rgba(108, 92, 231, 0.15);
+  background: #FCFAFF;
+}
+
+.gjs-block:active {
+  cursor: grabbing;
 }
 
 .gjs-block svg {
@@ -88,47 +207,19 @@ body, html {
   height: 28px;
 }
 
-/* Categorie blocchi */
-.gjs-block-category .gjs-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #2D3436;
-  padding: 12px 16px;
-  border-bottom: 1px solid #F0F0F0;
-  background: #FAFBFC;
+.gjs-block__media {
+  margin-bottom: 4px;
 }
 
-/* Canvas */
-.gjs-cv-canvas {
-  background: #F5F6FA;
+/* Cestino / cancella */
+.gjs-block-delete {
+  display: none;
 }
 
-/* Dispositivi */
-.gjs-devices-c {
-  background: white;
-  padding: 8px;
-  border-bottom: 1px solid #F0F0F0;
-}
+/* =====================================================
+   SCROLLBAR
+   ===================================================== */
 
-/* Pannello stili */
-.gjs-sm-sector {
-  border: 1px solid #F0F0F0;
-}
-
-.gjs-sm-sector-title {
-  background: #FAFBFC;
-  font-size: 13px;
-  font-weight: 600;
-  color: #2D3436;
-  padding: 10px 16px;
-}
-
-/* Layer */
-.gjs-layers {
-  border: 1px solid #F0F0F0;
-}
-
-/* Scrollbar personalizzata */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -146,11 +237,17 @@ body, html {
   background: #B2BEC3;
 }
 
-/* Responsive */
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
 @media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    min-width: 200px;
+  }
+
   .gjs-block {
-    min-height: 56px;
-    padding: 8px;
-    font-size: 11px;
+    width: calc(100% - 8px);
   }
 }
