@@ -4,6 +4,31 @@
    ============================================================ */
 
 // —————————————————————————————————————
+// 0. CARICA CONFIG DINAMICO DA URL (?app=nome)
+// —————————————————————————————————————
+(function loadConfig() {
+  var params = new URLSearchParams(window.location.search);
+  var appName = params.get('app') || 'default';
+  var configFile = 'configs/' + appName + '.js';
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', configFile, false); // sincrono: blocca finché non carica
+  try {
+    xhr.send();
+    if (xhr.status === 200) {
+      eval(xhr.responseText);
+      console.log('✅ Config caricato:', configFile);
+    } else {
+      console.warn('Config non trovato:', configFile, '- uso pagine vuote');
+      window.__appConfig = { name: 'App', pages: {} };
+    }
+  } catch(e) {
+    console.warn('Errore caricamento config:', configFile);
+    window.__appConfig = { name: 'App', pages: {} };
+  }
+})();
+
+// —————————————————————————————————————
 // 1. INIZIALIZZA EDITOR — TUTTI I MODULI ATTIVI
 // —————————————————————————————————————
 var editor = grapesjs.init({
