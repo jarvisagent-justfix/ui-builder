@@ -2,7 +2,7 @@
    app.js — UI Builder Pro
    ===================================================== */
 
-const editor = grapesjs.init({
+var editor = grapesjs.init({
 
   container: '#gjs',
   width: 'auto',
