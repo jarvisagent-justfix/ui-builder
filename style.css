@@ -3,6 +3,18 @@
    Tema personalizzato per GrapesJS
    ===================================================== */
 
+/* Tema variabili */
+body {
+  --app-bg: #F5F6FA;
+  --app-surface: #FFFFFF;
+  --app-text: #2D3436;
+  --app-text-secondary: #636E72;
+  --app-border: #F0F0F0;
+  --app-primary: #6C5CE7;
+  --app-card-bg: #FFFFFF;
+  --app-icon: #B2BEC3;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body, html { height: 100%; overflow: hidden; }
 
