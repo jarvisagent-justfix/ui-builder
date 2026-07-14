@@ -919,4 +919,34 @@ function escapeHtml(str) {
 applyTheme('light');
 createDefaultPages();
 
+// Dopo che il canvas è caricato, inietta CSS per larghezza piena automatica
+editor.on('load', function() {
+  // Aspetta che il frame esista
+  var checkFrame = setInterval(function() {
+    var frame = editor.Canvas.getFrameEl();
+    if (frame && frame.contentDocument && frame.contentDocument.head) {
+      clearInterval(checkFrame);
+      var style = document.createElement('style');
+      style.textContent = `
+        /* Larghezza piena per ogni elemento mobile */
+        body {
+          margin: 0 auto;
+          font-family: Inter, -apple-system, sans-serif;
+          -webkit-font-smoothing: antialiased;
+        }
+        div, nav, section, header, footer, main, article,
+        aside, form, ul, ol, li, figure, picture, blockquote {
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        img, svg, video, canvas {
+          max-width: 100% !important;
+          height: auto;
+        }
+      `;
+      frame.contentDocument.head.appendChild(style);
+    }
+  }, 100);
+});
+
 console.log('✅ UI Builder Pro — ' + pages.getAll().length + ' pagine, ' + Object.keys(bm.getAll()).length + ' blocchi');
