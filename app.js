@@ -146,6 +146,45 @@ const navBlocks = [
       <span style="font-size:16px;font-weight:500;color:#333">Indietro</span>
     </div>`,
   },
+  {
+    id:'nav-hamburger', label:'Hamburger Menu ☰', cat:'Navigazione',
+    content:`<div style="position:relative;font-family:Inter,sans-serif;min-height:200px">
+      <!-- Barra superiore con hamburger -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:white;border-bottom:1px solid #f0f0f0">
+        <div style="font-size:24px;cursor:pointer;color:#333;line-height:1;width:36px;text-align:center">☰</div>
+        <span style="font-weight:600;color:#1a1a2e;font-size:16px">App Name</span>
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:600">T</div>
+      </div>
+      <!-- Sidebar (drawer) visibile in anteprima -->
+      <div style="position:absolute;top:0;left:0;bottom:0;width:260px;background:white;z-index:200;box-shadow:2px 0 20px rgba(0,0,0,0.1);display:flex;flex-direction:column">
+        <div style="padding:24px 16px 16px;background:linear-gradient(135deg,#667eea,#764ba2);color:white">
+          <div style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin-bottom:8px">T</div>
+          <div style="font-size:16px;font-weight:600">Toni Rossi</div>
+          <div style="font-size:12px;opacity:0.8">toni@esempio.it</div>
+        </div>
+        <div style="flex:1;padding:8px 0">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;color:#333;font-size:14px;background:#f0f2f5;border-right:3px solid #667eea"><span style="font-size:18px">🏠</span><span>Dashboard</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;color:#555;font-size:14px"><span style="font-size:18px">👤</span><span>Profilo</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;color:#555;font-size:14px"><span style="font-size:18px">⚙️</span><span>Impostazioni</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;color:#555;font-size:14px"><span style="font-size:18px">🔔</span><span>Notifiche</span></div>
+          <hr style="border:none;border-top:1px solid #f0f0f0;margin:8px 0">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;color:#e55;font-size:14px"><span style="font-size:18px">🚪</span><span>Esci</span></div>
+        </div>
+      </div>
+      <!-- Overlay (semi-trasparente) -->
+      <div style="position:absolute;top:0;left:260px;right:0;bottom:0;background:rgba(0,0,0,0.3);z-index:199"></div>
+    </div>`,
+  },
+  {
+    id:'nav-top-tabs', label:'Top Tab Bar', cat:'Navigazione',
+    content:`<div style="font-family:Inter,sans-serif;background:white;border-bottom:1px solid #f0f0f0">
+      <div style="display:flex;padding:0 16px">
+        <div style="flex:1;text-align:center;padding:12px 8px;border-bottom:2px solid #667eea;color:#667eea;font-weight:600;font-size:14px;cursor:pointer">Oggi</div>
+        <div style="flex:1;text-align:center;padding:12px 8px;border-bottom:2px solid transparent;color:#999;font-weight:500;font-size:14px;cursor:pointer;transition:all 0.15s">Settimana</div>
+        <div style="flex:1;text-align:center;padding:12px 8px;border-bottom:2px solid transparent;color:#999;font-weight:500;font-size:14px;cursor:pointer;transition:all 0.15s">Mese</div>
+      </div>
+    </div>`,
+  },
 ];
 reg(navBlocks);
 
