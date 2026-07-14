@@ -20,7 +20,6 @@ const editor = grapesjs.init({
 
   // Blocchi (li registriamo dopo)
   blockManager: {
-    appendTo: '#blocks',
     blocks: [],
   },
 
@@ -127,6 +126,16 @@ editor.Panels.addButton('options', {
 
 // Default: carica schermata dashboard
 editor.on('load', () => {
+  // Apri il pannello dei blocchi (icona blocchi nella sidebar sinistra)
+  const btn = editor.Panels.getButton('views', 'open-blocks');
+  if (btn) btn.set('active', true);
+
+  // Espandi tutte le categorie di blocchi
+  const categories = editor.BlockManager.getCategories();
+  if (categories) {
+    categories.each(c => c.set('open', true));
+  }
+
   const pages = editor.Pages;
   if (pages && pages.getAll().length === 0) {
     // Aggiunge un componente di benvenuto
