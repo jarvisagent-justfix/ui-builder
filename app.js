@@ -1,14 +1,13 @@
 /* =====================================================
-   app.js — Init GrapesJS con componenti custom
+   app.js — UI Builder Pro
    ===================================================== */
 
 const editor = grapesjs.init({
 
   container: '#gjs',
   width: 'auto',
-  height: '100%',
+  height: '100vh',
 
-  // Storage locale
   storageManager: {
     type: 'local',
     autosave: true,
@@ -16,16 +15,13 @@ const editor = grapesjs.init({
     stepsBeforeSave: 1,
   },
 
-  // Disabilita i pannelli di default (creiamo UI personalizzata)
-  panels: { defaults: [] },
+  // Pannelli di default di GrapesJS (toolbar, sidebar, canvas)
+  // I blocchi saranno nella sidebar sinistra (pulsante con icona quadretti)
 
-  // I blocchi vengono renderizzati nel div #blocks
   blockManager: {
-    appendTo: '#blocks',
     blocks: [],
   },
 
-  // Dispositivi
   deviceManager: {
     devices: [
       { name: 'Telefono', width: '390', height: '844' },
@@ -34,7 +30,6 @@ const editor = grapesjs.init({
     ]
   },
 
-  // Font per il canvas
   canvas: {
     styles: [
       'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
@@ -44,123 +39,77 @@ const editor = grapesjs.init({
 });
 
 // =====================================================
-// Registra tutti i blocchi custom
+// B LOCKS — Registra tutti i blocchi custom
 // =====================================================
 
 const bm = editor.BlockManager;
 
 const components = [
-  { id: 'dashboard-header',   label: 'Header Dashboard', ...dashboardHeader },
-  { id: 'stat-card-progress', label: 'Stat Card (In Progress)', ...statCardFn('#E8D5FF', '#6C5CE7', 'In Progress', '24') },
-  { id: 'stat-card-review',   label: 'Stat Card (In Review)',   ...statCardFn('#FFD5F0', '#E84393', 'In Review', '56') },
-  { id: 'stat-card-hold',     label: 'Stat Card (On Hold)',     ...statCardFn('#FFE8D5', '#F39C12', 'On Hold', '16') },
-  { id: 'stat-card-done',     label: 'Stat Card (Completed)',   ...statCardFn('#D5FFE8', '#00B894', 'Completed', '45') },
-  { id: 'stat-grid',         label: 'Stat Grid 2×2',         ...statGrid },
-  { id: 'progress-chart',    label: 'Bar Chart Settimanale', ...progressChart },
-  { id: 'working-hours',     label: 'Total Working Hours',   ...workingHours },
-  { id: 'task-filters',      label: 'Filtri Task',           ...taskFilters },
-  { id: 'task-card',         label: 'Task Card',             ...taskCard },
-  { id: 'task-list',         label: 'Lista Task',            ...taskListBlock },
-  { id: 'bottom-nav',        label: 'Bottom Navigation',     ...bottomNav },
+  // Dashboard
+  { id: 'dashboard-header',   label: 'Header Dashboard', ...dashboardHeader, cat: 'Dashboard' },
+  { id: 'stat-grid',         label: 'Stat Grid 2×2',     ...statGrid, cat: 'Dashboard' },
+  { id: 'progress-chart',    label: 'Bar Chart',         ...progressChart, cat: 'Dashboard' },
+  { id: 'working-hours',     label: 'Working Hours',     ...workingHours, cat: 'Dashboard' },
+  { id: 'task-filters',      label: 'Filtri Task',       ...taskFilters, cat: 'Dashboard' },
+  { id: 'task-card',         label: 'Task Card',         ...taskCard, cat: 'Dashboard' },
+  { id: 'task-list',         label: 'Lista Task',        ...taskListBlock, cat: 'Dashboard' },
+  { id: 'bottom-nav',        label: 'Bottom Nav',        ...bottomNav, cat: 'Dashboard' },
 
   // Elementi Base
-  { id: 'block-text',        label: 'Testo + Paragrafo',     ...blockText },
-  { id: 'block-title',       label: 'Titolo Sezione',        ...blockTitle },
-  { id: 'block-paragraph',   label: 'Paragrafo',             ...blockParagraph },
-  { id: 'block-button',      label: 'Pulsante',              ...blockButton },
-  { id: 'block-button-outline', label: 'Pulsante Outline',   ...blockButtonOutline },
-  { id: 'block-image',       label: 'Immagine',              ...blockImage },
-  { id: 'block-icon',        label: 'Icona',                 ...blockIcon },
-  { id: 'block-divider',     label: 'Divisore',              ...blockDivider },
-  { id: 'block-spacer',      label: 'Spaziatore',            ...blockSpacer },
+  { id: 'block-text',        label: 'Testo + Titolo',    ...blockText, cat: 'Elementi Base' },
+  { id: 'block-title',       label: 'Titolo Sezione',    ...blockTitle, cat: 'Elementi Base' },
+  { id: 'block-paragraph',   label: 'Paragrafo',         ...blockParagraph, cat: 'Elementi Base' },
+  { id: 'block-button',      label: 'Pulsante',          ...blockButton, cat: 'Elementi Base' },
+  { id: 'block-button-outline', label: 'Pulsante Out',   ...blockButtonOutline, cat: 'Elementi Base' },
+  { id: 'block-image',       label: 'Immagine',          ...blockImage, cat: 'Elementi Base' },
+  { id: 'block-icon',        label: 'Icona',             ...blockIcon, cat: 'Elementi Base' },
+  { id: 'block-divider',     label: 'Divisore',          ...blockDivider, cat: 'Elementi Base' },
+  { id: 'block-spacer',      label: 'Spaziatore',        ...blockSpacer, cat: 'Elementi Base' },
 
   // Form
-  { id: 'block-input',       label: 'Input Testo',           ...blockInput },
-  { id: 'block-textarea',    label: 'Textarea',              ...blockTextarea },
-  { id: 'block-select',      label: 'Menu a Tendina',        ...blockSelect },
-  { id: 'block-toggle',      label: 'Toggle',                ...blockToggle },
-  { id: 'block-checkbox',    label: 'Checkbox',              ...blockCheckbox },
-  { id: 'block-datepicker',  label: 'Selettore Data',        ...blockDatePicker },
-  { id: 'block-search',      label: 'Barra Ricerca',         ...blockSearch },
+  { id: 'block-input',       label: 'Input Testo',       ...blockInput, cat: 'Form' },
+  { id: 'block-textarea',    label: 'Textarea',           ...blockTextarea, cat: 'Form' },
+  { id: 'block-select',      label: 'Menu a Tendina',     ...blockSelect, cat: 'Form' },
+  { id: 'block-toggle',      label: 'Toggle',             ...blockToggle, cat: 'Form' },
+  { id: 'block-checkbox',    label: 'Checkbox',           ...blockCheckbox, cat: 'Form' },
+  { id: 'block-datepicker',  label: 'Selettore Data',     ...blockDatePicker, cat: 'Form' },
+  { id: 'block-search',      label: 'Barra Ricerca',      ...blockSearch, cat: 'Form' },
 
   // Dati e Stati
-  { id: 'block-badge',       label: 'Badge / Tag',           ...blockBadge },
-  { id: 'block-progress',    label: 'Barra Progresso',       ...blockProgressBar },
-  { id: 'block-profile-card', label: 'Card Profilo',         ...blockProfileCard },
-  { id: 'block-alert',       label: 'Alert Successo',        ...blockAlert },
-  { id: 'block-alert-error', label: 'Alert Errore',          ...blockAlertError },
-  { id: 'block-empty',       label: 'Stato Vuoto',           ...blockEmptyState },
-  { id: 'block-loading',     label: 'Caricamento',           ...blockLoading },
+  { id: 'block-badge',       label: 'Badge / Tag',        ...blockBadge, cat: 'Dati e Stati' },
+  { id: 'block-progress',    label: 'Barra Progresso',    ...blockProgressBar, cat: 'Dati e Stati' },
+  { id: 'block-profile-card', label: 'Card Profilo',      ...blockProfileCard, cat: 'Dati e Stati' },
+  { id: 'block-alert',       label: 'Alert Successo',     ...blockAlert, cat: 'Dati e Stati' },
+  { id: 'block-alert-error', label: 'Alert Errore',       ...blockAlertError, cat: 'Dati e Stati' },
+  { id: 'block-empty',       label: 'Stato Vuoto',         ...blockEmptyState, cat: 'Dati e Stati' },
+  { id: 'block-loading',     label: 'Caricamento',         ...blockLoading, cat: 'Dati e Stati' },
 ];
 
 components.forEach(c => {
   bm.add(c.id, {
     label: c.label,
     content: c.content,
-    category: c.category || 'Componenti',
-    media: c.media || `<svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="#6C5CE7" opacity="0.2"/><rect x="6" y="6" width="5" height="5" rx="1" fill="#6C5CE7"/></svg>`,
+    category: c.cat,
+    media: c.media || '',
   });
 });
 
 // =====================================================
-// Pannello toolbar (sostituisce i pannelli di default)
+// TOOLBAR — Aggiunge pulsante Export
 // =====================================================
 
-const pn = editor.Panels;
-
-pn.addPanel({ id: 'options', visible: true });
-
-pn.addButton('options', {
-  id: 'undo',
-  className: 'fa fa-undo toolbar-btn',
-  command: e => e.runCommand('core:undo'),
-  attributes: { title: 'Annulla' },
-});
-
-pn.addButton('options', {
-  id: 'redo',
-  className: 'fa fa-redo toolbar-btn',
-  command: e => e.runCommand('core:redo'),
-  attributes: { title: 'Ripeti' },
-});
-
-pn.addButton('options', {
-  id: 'device-desktop',
-  className: 'fa fa-desktop toolbar-btn',
-  command: e => editor.setDevice('Desktop'),
-  attributes: { title: 'Desktop' },
-});
-
-pn.addButton('options', {
-  id: 'device-tablet',
-  className: 'fa fa-tablet toolbar-btn',
-  command: e => editor.setDevice('Tablet'),
-  attributes: { title: 'Tablet' },
-});
-
-pn.addButton('options', {
-  id: 'device-mobile',
-  className: 'fa fa-mobile toolbar-btn',
-  command: e => editor.setDevice('Telefono'),
-  attributes: { title: 'Telefono' },
-});
-
-pn.addButton('options', {
+editor.Panels.addButton('options', {
   id: 'export',
-  className: 'fa fa-download toolbar-btn',
+  className: 'fa fa-download',
   command: 'export-html',
   attributes: { title: 'Esporta HTML/CSS' },
 });
 
-// =====================================================
-// Comando esportazione HTML
-// =====================================================
-
 editor.Commands.add('export-html', {
-  run: function(editor) {
-    const html = editor.getHtml();
-    const css = editor.getCss();
-    const fullDoc = `<!DOCTYPE html>
+  run: function(ed) {
+    const html = ed.getHtml();
+    const css = ed.getCss();
+    const doc = `<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -177,21 +126,28 @@ ${css}
 ${html}
 </body>
 </html>`;
-    const win = window.open('', '_blank');
-    if (win) {
-      win.document.write(fullDoc);
-      win.document.close();
-    }
+    const w = window.open('', '_blank');
+    if (w) { w.document.write(doc); w.document.close(); }
   }
 });
 
 // =====================================================
-// All'avvio: espande le categorie dei blocchi
+// ON LOAD — Attiva blocchi ed espande categorie
 // =====================================================
 
 editor.on('load', () => {
-  const categories = editor.BlockManager.getCategories();
-  if (categories) {
-    categories.each(c => c.set('open', true));
+  // Attiva il pannello blocchi (icona quadretti nella sidebar sinistra)
+  const viewsPanel = editor.Panels.getPanel('views');
+  if (viewsPanel) {
+    const btns = viewsPanel.get('buttons');
+    const blocksBtn = btns.find(b => b.id === 'open-blocks' || b.id === 'blocks');
+    if (blocksBtn) blocksBtn.set('active', true);
   }
+
+  // Espande tutte le categorie di blocchi
+  const cats = editor.BlockManager.getCategories();
+  if (cats) cats.each(c => c.set('open', true));
+
+  // Imposta dispositivo default su Telefono
+  editor.setDevice('Telefono');
 });
