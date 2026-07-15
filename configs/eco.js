@@ -87,35 +87,6 @@ window.__appConfig = {
     </div>
   </div>
 
-  <!-- Diario rapido -->
-  <div style="margin:20px 16px 0">
-    <div style="background:white;border-radius:20px;padding:18px;box-shadow:0 2px 16px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.04)">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-        <span style="font-size:16px">📝</span>
-        <span style="font-size:14px;font-weight:600;color:#264653">Diario di oggi</span>
-        <span style="margin-left:auto;background:#E9C46A20;color:#b8942e;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500">2/4 completato</span>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#f8fff9;border-radius:12px;border-left:3px solid #2A9D8F">
-          <span style="font-size:18px;color:#2A9D8F">✅</span>
-          <div style="flex:1;font-size:13px;color:#333"><strong>Come stai oggi?</strong> — Sereno, giornata produttiva</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#f8fff9;border-radius:12px;border-left:3px solid #2A9D8F">
-          <span style="font-size:18px;color:#2A9D8F">✅</span>
-          <div style="flex:1;font-size:13px;color:#333"><strong>Cosa è successo?</strong> — Riunione finale con il team</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:white;border-radius:12px;border-left:3px solid #ddd">
-          <span style="font-size:18px;color:#ddd">⬜</span>
-          <div style="flex:1;font-size:13px;color:#bbb"><strong>Cosa ti preoccupa?</strong> — Tocca per rispondere</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:white;border-radius:12px;border-left:3px solid #ddd">
-          <span style="font-size:18px;color:#ddd">⬜</span>
-          <div style="flex:1;font-size:13px;color:#bbb"><strong>Cosa ti ha reso felice?</strong> — Tocca per rispondere</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Bottom Nav -->
   <div style="position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0 14px;border-top:1px solid #f0f0f0;max-width:420px;margin:0 auto;z-index:100">
     <div style="text-align:center;color:#2A9D8F"><div style="font-size:22px">🏠</div><div style="font-size:10px;font-weight:600">Home</div></div>
@@ -424,11 +395,6 @@ window.__appConfig = {
       <div style="font-size:28px;font-weight:800;color:#e76f51">7 giorni</div>
       <div style="font-size:11px;color:#999;margin-top:2px">Record: 14 giorni</div>
     </div>
-    <div style="flex:1;background:white;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.04)">
-      <div style="font-size:13px;font-weight:600;color:#264653;margin-bottom:10px">🏆 Diario</div>
-      <div style="font-size:28px;font-weight:800;color:#2A9D8F">23</div>
-      <div style="font-size:11px;color:#999;margin-top:2px">Risposte totali</div>
-    </div>
   </div>
 
   <!-- Attività recente -->
@@ -489,10 +455,6 @@ window.__appConfig = {
       <div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f5f5f5">
         <div style="display:flex;align-items:center;gap:10px"><span style="font-size:18px">🎂</span><span style="font-size:14px;color:#333">Compleanni persone</span></div>
         <label style="width:44px;height:24px;position:relative"><input type="checkbox" checked style="opacity:0;width:0;height:0"><span style="position:absolute;cursor:pointer;inset:0;background:#2A9D8F;border-radius:24px"></span><span style="position:absolute;height:20px;width:20px;left:2px;bottom:2px;background:white;border-radius:50%;transform:translateX(20px)"></span></label>
-      </div>
-      <div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f5f5f5">
-        <div style="display:flex;align-items:center;gap:10px"><span style="font-size:18px">📝</span><span style="font-size:14px;color:#333">Promemoria diario serale</span></div>
-        <label style="width:44px;height:24px;position:relative"><input type="checkbox" style="opacity:0;width:0;height:0"><span style="position:absolute;cursor:pointer;inset:0;background:#ddd;border-radius:24px"></span><span style="position:absolute;height:20px;width:20px;left:2px;bottom:2px;background:white;border-radius:50%"></span></label>
       </div>
     </div>
 
