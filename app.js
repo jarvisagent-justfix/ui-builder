@@ -606,6 +606,15 @@ const appConfig = window.__appConfig || { name: 'App', pages: {} };
 // 5. CREA PAGINE DAL CONFIG
 // —————————————————————————————————————
 function createPagesFromConfig() {
+  // Se ci sono già pagine salvate in localStorage, non sovrascrivere
+  try {
+    if (localStorage.getItem('gjsProject')) {
+      console.log('📂 Caricate modifiche salvate - config ignorato');
+      renderPageTabs();
+      return;
+    }
+  } catch(e) {}
+
   var config = window.__appConfig || { pages: {} };
   var names = Object.keys(config.pages);
   if (names.length === 0) {
@@ -725,6 +734,37 @@ function escapeHtml(str) {
   div.textContent = str;
   return div.innerHTML;
 }
+
+// 💾 Salva modifiche
+document.getElementById('btn-save').onclick = function() {
+  try {
+    editor.store();
+    var btn = document.getElementById('btn-save');
+    btn.textContent = '✅ Salvato!';
+    btn.style.background = '#2A9D8F';
+    btn.style.color = 'white';
+    setTimeout(function() {
+      btn.textContent = '💾 Salva';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 1500);
+  } catch(e) {
+    alert('Errore durante il salvataggio');
+  }
+};
+
+// 🔄 Reset: cancella localStorage e ricarica
+document.getElementById('btn-reset').onclick = function() {
+  if (!confirm('⚠️ Reset: tutte le modifiche non esportate andranno perse. Continuare?')) return;
+  try {
+    localStorage.removeItem('gjsProject');
+    localStorage.removeItem('gjsComponents');
+    localStorage.removeItem('gjsStyles');
+    localStorage.removeItem('gjsCss');
+    localStorage.removeItem('gjsHtml');
+  } catch(e) {}
+  location.reload();
+};
 
 // —————————————————————————————————————
 // 8. AVVIO
