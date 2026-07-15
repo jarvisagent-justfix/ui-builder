@@ -653,6 +653,197 @@ window.__appConfig = {
       <span class="eco-action-icon">🗑️</span>Elimina ricordo
     </div>
   </div>
+</div>`,
+
+    // ===== 7. ASSEGNA REGISTRAZIONE (Modale) =====
+    '📋 Assegna Persona': `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+.eco-modal-root{font-family:'Inter',sans-serif;background:#141416;border-radius:28px 28px 0 0;padding:20px 22px 30px;color:#f5f4f2;max-width:390px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08)}
+.eco-modal-root *{box-sizing:border-box;margin:0;padding:0}
+.eco-modal-handle{width:40px;height:4px;background:rgba(255,255,255,0.08);border-radius:4px;margin:0 auto 16px}
+.eco-modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.eco-modal-title{font-size:18px;font-weight:800}
+.eco-modal-close{width:30px;height:30px;border-radius:50%;background:#1c1c1f;border:none;color:#9a9a9e;font-size:14px;display:flex;align-items:center;justify-content:center}
+.eco-assign-sub{font-size:14px;color:#9a9a9e;margin-bottom:14px}
+.eco-person-option{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;background:#1c1c1f;cursor:pointer;font-size:13px;font-weight:600;margin-bottom:8px}
+.eco-person-option.selected{background:rgba(255,122,69,0.14);border:1px solid #ff7a45}
+.eco-option-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;color:#fff}
+.eco-modal-footer{display:flex;gap:10px;margin-top:8px}
+.eco-btn{flex:1;padding:14px;border-radius:14px;border:none;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.eco-btn-primary{background:#ff7a45;color:#1a0f08}
+.eco-btn-secondary{background:#1c1c1f;color:#f5f4f2}
+</style>
+
+<div class="eco-modal-root">
+  <div class="eco-modal-handle"></div>
+  <div class="eco-modal-header">
+    <h2 class="eco-modal-title">A chi appartiene questo ricordo?</h2>
+    <div class="eco-modal-close">✕</div>
+  </div>
+
+  <div class="eco-assign-sub">Seleziona la persona a cui associare l'audio registrato.</div>
+
+  <!-- Person options -->
+  <div class="eco-person-option selected">
+    <div class="eco-option-avatar" style="background:#7aa7ff">NC</div>
+    Nonna Carla
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#ff7a45">P</div>
+    Papà
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#ff6b8b">M</div>
+    Mamma
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#5fd9a4">NA</div>
+    Nonno Aldo
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#ffb84d">ZR</div>
+    Zia Rosa
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#c99aff">M</div>
+    Marco
+  </div>
+
+  <!-- Buttons -->
+  <div class="eco-modal-footer">
+    <button class="eco-btn eco-btn-secondary">Scarta audio</button>
+    <button class="eco-btn eco-btn-primary">Salva ricordo</button>
+  </div>
+</div>`,
+
+    // ===== 8. CONFERMA ELIMINA (Dialog) =====
+    '⚠️ Conferma Elimina': `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+.eco-dialog-root{font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px)}
+.eco-dialog-root *{box-sizing:border-box;margin:0;padding:0}
+.eco-dialog-box{width:270px;background:#2a2a2d;border-radius:18px;overflow:hidden;text-align:center}
+.eco-dialog-title{font-size:15px;font-weight:700;padding:20px 20px 6px;color:#f5f4f2}
+.eco-dialog-text{font-size:12.5px;color:#9a9a9e;padding:0 20px 18px;line-height:1.4}
+.eco-dialog-actions{display:flex;border-top:1px solid rgba(255,255,255,0.1)}
+.eco-dialog-btn{flex:1;padding:13px;font-size:14px;font-weight:600;cursor:pointer;border:none;background:none;color:#f5f4f2}
+.eco-dialog-btn.delete{color:#ff5c5c;font-weight:700;border-left:1px solid rgba(255,255,255,0.1)}
+</style>
+
+<div class="eco-dialog-root">
+  <div class="eco-dialog-box">
+    <div class="eco-dialog-title">Eliminare questo ricordo?</div>
+    <div class="eco-dialog-text">Questa azione non può essere annullata. L'audio e la trascrizione andranno persi per sempre.</div>
+    <div class="eco-dialog-actions">
+      <button class="eco-dialog-btn">Annulla</button>
+      <button class="eco-dialog-btn delete">Elimina</button>
+    </div>
+  </div>
+</div>`,
+
+    // ===== 9. MODIFICA RICORDO (Form) =====
+    '✏️ Modifica Ricordo': `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+.eco-form-root{font-family:'Inter',sans-serif;background:#141416;border-radius:28px 28px 0 0;padding:20px 22px 30px;color:#f5f4f2;max-width:390px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08)}
+.eco-form-root *{box-sizing:border-box;margin:0;padding:0}
+.eco-form-handle{width:40px;height:4px;background:rgba(255,255,255,0.08);border-radius:4px;margin:0 auto 16px}
+.eco-form-title{font-size:18px;font-weight:800;margin-bottom:18px}
+.eco-field{margin-bottom:14px}
+.eco-field label{font-size:11.5px;color:#9a9a9e;display:block;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.eco-field select,.eco-field textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:#1c1c1f;color:#f5f4f2;font-size:14px;outline:none;font-family:inherit;box-sizing:border-box}
+.eco-field select:focus,.eco-field textarea:focus{border-color:#ff7a45}
+.eco-field textarea{resize:none;min-height:120px;line-height:1.5}
+.eco-form-footer{display:flex;gap:10px;margin-top:8px}
+.eco-btn{flex:1;padding:14px;border-radius:14px;border:none;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.eco-btn-primary{background:#ff7a45;color:#1a0f08}
+.eco-btn-secondary{background:#1c1c1f;color:#f5f4f2}
+</style>
+
+<div class="eco-form-root">
+  <div class="eco-form-handle"></div>
+  <div class="eco-form-title">Modifica ricordo</div>
+
+  <!-- Emotion -->
+  <div class="eco-field">
+    <label>Emozione</label>
+    <select>
+      <option value="joy">Gioia</option>
+      <option value="nostalgia">Nostalgia</option>
+      <option value="love" selected>Amore</option>
+      <option value="gratitude">Gratitudine</option>
+    </select>
+  </div>
+
+  <!-- Transcript -->
+  <div class="eco-field">
+    <label>Trascrizione</label>
+    <textarea>Sono orgogliosa di te, ricordalo sempre. Non importa cosa succede, io sarò sempre qui con te, nel cuore.</textarea>
+  </div>
+
+  <!-- Buttons -->
+  <div class="eco-form-footer">
+    <button class="eco-btn eco-btn-secondary">Annulla</button>
+    <button class="eco-btn eco-btn-primary">Salva modifiche</button>
+  </div>
+</div>`,
+
+    // ===== 10. SPOSTA RICORDO (Picker) =====
+    '↗️ Sposta Ricordo': `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+.eco-picker-root{font-family:'Inter',sans-serif;background:#141416;border-radius:28px 28px 0 0;padding:20px 22px 30px;color:#f5f4f2;max-width:390px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08)}
+.eco-picker-root *{box-sizing:border-box;margin:0;padding:0}
+.eco-picker-handle{width:40px;height:4px;background:rgba(255,255,255,0.08);border-radius:4px;margin:0 auto 16px}
+.eco-picker-title{font-size:18px;font-weight:800;margin-bottom:14px}
+.eco-picker-sub{font-size:13px;color:#9a9a9e;margin-bottom:14px}
+.eco-person-option{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;background:#1c1c1f;cursor:pointer;font-size:13px;font-weight:600;margin-bottom:8px}
+.eco-person-option.selected{background:rgba(255,122,69,0.14);border:1px solid #ff7a45}
+.eco-option-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;color:#fff}
+.eco-picker-footer{display:flex;gap:10px;margin-top:8px}
+.eco-btn{flex:1;padding:14px;border-radius:14px;border:none;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.eco-btn-primary{background:#ff7a45;color:#1a0f08}
+.eco-btn-secondary{background:#1c1c1f;color:#f5f4f2}
+
+/* Excluded person indicator */
+.eco-excluded-note{font-size:11px;color:#ff6b8b;text-align:center;margin-bottom:10px;padding:8px;background:rgba(255,92,92,0.08);border-radius:10px}
+</style>
+
+<div class="eco-picker-root">
+  <div class="eco-picker-handle"></div>
+  <div class="eco-picker-title">Sposta ad un'altra persona</div>
+  <div class="eco-picker-sub">Seleziona la persona a cui spostare questo ricordo.</div>
+
+  <div class="eco-excluded-note">📍 Attualmente: Nonna Carla</div>
+
+  <!-- Person options (excludes current person) -->
+  <div class="eco-person-option selected">
+    <div class="eco-option-avatar" style="background:#ff7a45">P</div>
+    Papà
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#ff6b8b">M</div>
+    Mamma
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#5fd9a4">NA</div>
+    Nonno Aldo
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#ffb84d">ZR</div>
+    Zia Rosa
+  </div>
+  <div class="eco-person-option">
+    <div class="eco-option-avatar" style="background:#c99aff">M</div>
+    Marco
+  </div>
+
+  <!-- Buttons -->
+  <div class="eco-picker-footer">
+    <button class="eco-btn eco-btn-secondary">Annulla</button>
+    <button class="eco-btn eco-btn-primary">Conferma spostamento</button>
+  </div>
 </div>`
   }
 };
