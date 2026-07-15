@@ -70,7 +70,7 @@ window.__appConfig = {
 
   <!-- Hero card -->
   <div class="eco-hero-card">
-    <div class="eco-hero-tag">✨ Ricordo del giorno</div>
+    <div class="eco-hero-tag">✨ RICORDO DEL GIORNO</div>
     <div class="eco-hero-quote">"Sono orgogliosa di te, ricordalo sempre."</div>
     <div class="eco-hero-wave"><span style="height:8px"></span><span style="height:14px"></span><span style="height:10px"></span><span style="height:18px"></span><span style="height:12px"></span><span style="height:6px"></span><span style="height:16px"></span><span style="height:10px"></span><span style="height:14px"></span><span style="height:8px"></span><span style="height:16px"></span><span style="height:12px"></span></div>
     <div class="eco-hero-from">
@@ -84,9 +84,9 @@ window.__appConfig = {
 
   <!-- Metrics -->
   <div class="eco-metric-row">
-    <div class="eco-metric-card"><div style="font-size:26px;margin-bottom:6px">🎙️</div><div class="eco-metric-val">47</div><div class="eco-metric-lbl">Ricordi</div></div>
-    <div class="eco-metric-card"><div style="font-size:26px;margin-bottom:6px">👥</div><div class="eco-metric-val">6</div><div class="eco-metric-lbl">Persone</div></div>
-    <div class="eco-metric-card"><div style="font-size:26px;margin-bottom:6px">⏱️</div><div class="eco-metric-val">2h 14m</div><div class="eco-metric-lbl">Voce custodita</div></div>
+    <div class="eco-metric-card"><div style="width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;background:rgba(255,122,69,0.16);color:#ffb199;margin-bottom:8px">🎙️</div><div class="eco-metric-val">47</div><div class="eco-metric-lbl">RICORDI</div></div>
+    <div class="eco-metric-card"><div style="width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;background:rgba(122,167,255,0.16);color:#7aa7ff;margin-bottom:8px">👥</div><div class="eco-metric-val">6</div><div class="eco-metric-lbl">PERSONE</div></div>
+    <div class="eco-metric-card"><div style="width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;background:rgba(95,217,164,0.16);color:#5fd9a4;margin-bottom:8px">⏱️</div><div class="eco-metric-val">2h 14m</div><div class="eco-metric-lbl">VOCE CUSTODITA</div></div>
   </div>
 
   <!-- People section -->
@@ -99,7 +99,9 @@ window.__appConfig = {
     <div class="eco-people-card"><div class="eco-people-avatar" style="background:#ff7a45">P</div><div class="eco-people-name">Papà</div><div class="eco-people-count">14 ricordi</div></div>
     <div class="eco-people-card"><div class="eco-people-avatar" style="background:#ff6b8b">M</div><div class="eco-people-name">Mamma</div><div class="eco-people-count">11 ricordi</div></div>
     <div class="eco-people-card"><div class="eco-people-avatar" style="background:#5fd9a4">NA</div><div class="eco-people-name">Nonno</div><div class="eco-people-count">2 ricordi</div></div>
-    <div class="eco-people-card eco-add-card"><div class="eco-people-avatar" style="background:transparent;font-size:22px;color:#ffb199">+</div><div class="eco-people-name">Aggiungi</div></div>
+    <div class="eco-people-card"><div class="eco-people-avatar" style="background:#ffb84d">ZR</div><div class="eco-people-name">Zia</div><div class="eco-people-count">3 ricordi</div></div>
+    <div class="eco-people-card"><div class="eco-people-avatar" style="background:#c99aff">M</div><div class="eco-people-name">Marco</div><div class="eco-people-count">5 ricordi</div></div>
+    <div class="eco-people-card eco-add-card"><div class="eco-people-avatar" style="background:transparent;font-size:22px;color:#ffb199">+</div><div class="eco-people-name">Nuovo</div></div>
   </div>
 
   <!-- Recent memories -->
@@ -280,6 +282,52 @@ window.__appConfig = {
     </div>
   </div>
 
+  <!-- Persona 5 -->
+  <div class="eco-person-card">
+    <div class="eco-star-btn nofav">★</div>
+    <div class="eco-card-top">
+      <div class="eco-avatar-wrap">
+        <div class="eco-avatar-round" style="background:#ffb84d">ZR</div>
+        <div class="eco-edit-badge">✏️</div>
+      </div>
+      <div class="eco-card-info">
+        <div class="eco-card-name">Zia Rosa</div>
+        <div class="eco-card-rel">Zia</div>
+        <div class="eco-card-desc">Poche registrazioni ma tutte piene di affetto, sempre pronta a farsi sentire nei momenti giusti.</div>
+      </div>
+    </div>
+    <div class="eco-card-footer">
+      <div class="eco-mini-stat"><div class="mv">3</div><div class="ml">Ricordi</div></div>
+      <div class="eco-mini-div"></div>
+      <div class="eco-mini-stat"><div class="mv">7 min</div><div class="ml">Durata tot.</div></div>
+      <div class="eco-mini-div"></div>
+      <div class="eco-mini-stat"><div class="mv">—</div><div class="ml">Preferito</div></div>
+    </div>
+  </div>
+
+  <!-- Persona 6 -->
+  <div class="eco-person-card">
+    <div class="eco-star-btn nofav">★</div>
+    <div class="eco-card-top">
+      <div class="eco-avatar-wrap">
+        <div class="eco-avatar-round" style="background:#c99aff">M</div>
+        <div class="eco-edit-badge">✏️</div>
+      </div>
+      <div class="eco-card-info">
+        <div class="eco-card-name">Marco</div>
+        <div class="eco-card-rel">Fratello</div>
+        <div class="eco-card-desc">I nostri scherzi di famiglia e le battute che solo noi due capiamo davvero.</div>
+      </div>
+    </div>
+    <div class="eco-card-footer">
+      <div class="eco-mini-stat"><div class="mv">5</div><div class="ml">Ricordi</div></div>
+      <div class="eco-mini-div"></div>
+      <div class="eco-mini-stat"><div class="mv">12 min</div><div class="ml">Durata tot.</div></div>
+      <div class="eco-mini-div"></div>
+      <div class="eco-mini-stat"><div class="mv">—</div><div class="ml">Preferito</div></div>
+    </div>
+  </div>
+
   <!-- Tab bar -->
   <div class="eco-tabbar">
     <div class="eco-tab-item"><div class="eco-tab-icon">🏠</div>Home</div>
@@ -415,6 +463,21 @@ window.__appConfig = {
       <span class="eco-memory-dur">0:34</span>
     </div>
     <div class="eco-memory-text">"Ridevamo sempre a tavola, tuo nonno raccontava le barzellette più assurde..."</div>
+  </div>
+
+  <!-- Memory 4 -->
+  <div class="eco-memory-card">
+    <div class="eco-memory-star fav">★</div>
+    <div class="eco-memory-top">
+      <div class="eco-memory-date">2 apr 2026</div>
+      <div class="eco-memory-emotion" style="background:rgba(95,217,164,0.13);color:#5fd9a4"><div style="width:7px;height:7px;border-radius:50%;background:#5fd9a4"></div>Gratitudine</div>
+    </div>
+    <div class="eco-memory-row">
+      <div class="eco-memory-play">▶</div>
+      <div class="eco-memory-wave"><span style="height:10px"></span><span style="height:18px"></span><span style="height:12px"></span><span style="height:8px"></span><span style="height:16px"></span><span style="height:14px"></span><span style="height:6px"></span><span style="height:20px"></span><span style="height:12px"></span><span style="height:16px"></span><span style="height:10px"></span><span style="height:14px"></span></div>
+      <span class="eco-memory-dur">0:51</span>
+    </div>
+    <div class="eco-memory-text">"Grazie per essere venuto a trovarmi oggi, mi hai fatto una gran gioia."</div>
   </div>
 </div>`,
 
